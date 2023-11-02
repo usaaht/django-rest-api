@@ -112,8 +112,6 @@ def delete_todo(request):
             'message': 'Todo not found',
             'data': {}
         })
-
-    
 class TodoClass(APIView):
     def get_queryset(self, uid):
         try:
@@ -148,6 +146,6 @@ class Certin(viewsets):
     def get(request):
         return Response({
             'status' : False,
-            'message' : 'Hey How are you'
+            'message' : 'Hey How was your day'
         })
     
