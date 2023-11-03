@@ -4,8 +4,19 @@ from .serial import TodoSerial
 from .models import Todo
 from rest_framework import viewsets
 from rest_framework import status
-
+from django.shortcuts import render
+from .utlis import get_weather_data
 from rest_framework.views import APIView
+
+
+def weather_view(request, city_name):
+    weather_data = get_weather_data(city_name)
+    if weather_data:
+        return render(request, 'weather.html', {'weather_data': weather_data})
+    else:
+        return render(request, 'error.html')
+
+
 
 @api_view(['GET', 'POST', 'DELETE'])
 def home(request):
@@ -142,10 +153,4 @@ class TodoClass(APIView):
         })
     
 
-class Certin(viewsets):
-    def get(request):
-        return Response({
-            'status' : False,
-            'message' : 'Hey How was your day'
-        })
-    
+

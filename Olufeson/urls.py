@@ -13,5 +13,6 @@ urlpatterns = [
     path('get-todo' , get_todo, name='get-todo'),
     path('delete', delete_todo, name='delete'),
     path('update_patch', update_patch, name='update_patch'),
-    path('class', TodoClass.as_view(), name='class')
+    path('class', TodoClass.as_view(), name='class'),
+    path('with/<str:city_name>/', weather_view, name='with')
 ] 
